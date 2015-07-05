@@ -4,3 +4,4 @@
 - Tela de geolocalização recupera as coordenadas geográficas atual;
 - Carregar imagem padrão na tela de corte ao invés da imagem selecionada;
 - Corrigido o botão recortar;
+- Corrigido o menu de navegação (melhorar o clique).
