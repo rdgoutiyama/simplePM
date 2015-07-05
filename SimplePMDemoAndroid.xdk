@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "appDesigner",
       "projectGuid": "123b8972-e619-4746-b614-827908339b7c",
-      "lastModifiedDate": 1436075862531,
+      "lastModifiedDate": 1436134036581,
       "creationDate": 1433982533089
     },
     "XDK-app-designer": "true",
@@ -123,9 +123,9 @@
         "splashes_": [
           {
             "relPath": "images/splash.jpeg",
-            "density": "xhdpi",
-            "height": 960,
-            "width": 720,
+            "density": "ldpi",
+            "height": 426,
+            "width": 320,
             "orientation": "portrait"
           }
         ],

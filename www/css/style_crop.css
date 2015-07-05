@@ -12,8 +12,21 @@ html, body{
 
 .page_title{
     font-size: 4vw;
+    position: fixed;
+    float: left;
+    margin-left: 25%;
+}
+.setaEsquerda{ 
+    cursor: pointer; 
+    float: left; 
+    padding: 5% 15% 5% 5%;
 }
 
+.setaDireita{
+    cursor: pointer; 
+    float: right;  
+    padding: 5% 0% 5% 15%; 
+}
 .next{
     -ms-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
