@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-min.css">
+        <title>Blank App Designer Packaged Web App Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+ 
+        <style> 
+                @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; } 
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+        <link rel="stylesheet" href="css/style_crop.css">
+
+        <script src="cordova.js" id="xdkJScordova_"></script>
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="jqm/jquery.mobile-min.js" data-ver="0"></script>
+
+        <style type="text/css" media="screen">
+        </style>
+    </head>
+
+    <body>
+        <div class="upage" id="mainpage" data-role="page">
+            <div class="opacity">                
+                <div class="upage-outer">
+                    <div data-role="header" class="container-group inner-element uib_w_1" data-uib="jquery_mobile/header" data-ver="0">
+                        <div class="widget-container wrapping-col single-centered">
+                            <div class="widget uib_w_16 d-margins" data-uib="media/text" data-ver="0">
+
+                                
+                                <a onclick="javascript:previousPage();">
+                                    <div class="widget-container left-receptacle">
+                                        <img class="back" src="images/seta.png">
+                                    </div>
+                                </a> 
+                                
+                                <a onclick="javascript:nextPage();">
+                                    <div class="widget-container right-receptacle">
+                                        <img class="next" src="images/seta.png">
+                                    </div>
+                                </a>
+
+                                <div>
+                                    <p class="page_title">Selecionar Imagem de Fundo</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <div id="container_crop">
+                    <div id="div_crop_imagem" class="widget uib_w_15 scale-image d-margins" data-uib="media/img" data-ver="0">
+                        <figure class="figure-align">
+                            <canvas id="img_crop_canvas"></canvas>
+                            <img id="img_crop" src="images/logoSPM.png" />
+                            <figcaption data-position="bottom"></figcaption>
+                        </figure>
+                    </div>
+                </div> 
+
+                <form method="post">
+                    <input type="hidden" id="x" name="x">
+                    <input type="hidden" id="y" name="y">
+                    <input type="hidden" id="w" name="w">
+                    <input type="hidden" id="h" name="h">
+                </form>
+
+                <div class="form">
+                    <div class="upage-content content-area vertical-col left" id="page_46_89">
+
+                        <a class="widget uib_w_7 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button" onclick="javascript:recortar();">Recortar</a>
+                    </div>
+                    <span id="tmp"></span>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <link rel="stylesheet" href="css/jquery.Jcrop.css" />
+    <link rel="stylesheet" href="css/jquery.Jcrop.min.css" />
+    <script src="js/jquery.Jcrop.min.js" ></script>
+    <script src="js/jquery.Jcrop.js" ></script>
+    <script src="js/crop.js" ></script>
+</html>

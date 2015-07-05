@@ -1,0 +1,101 @@
+@font-face{
+    font-family: "DINPro-Light";
+    src: url(../fonts/DINPro-Light.otf) format("truetype");
+}
+
+.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit{
+    background: transparent;
+}
+
+#next{
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    float: right;
+    margin-left: 81%;
+    max-height: 20px;
+    max-width: 10px
+}
+#back{
+}
+
+
+.ui-page-theme-a{
+    background: url(../images/bg_parte1.png)!important;
+    background-size: cover!important;
+    background-position: center center!important;
+    background-attachment: fixed!important;
+}
+
+.figure-align #next, .figure-align #back{
+    display: block;
+    margin: 0 45%;
+    max-height: 20px;
+    max-width: 14%;
+}
+
+p{
+    font-family: "DINPro-Light";
+    color:#7c8990;
+    font-size: 300;
+    text-shadow:none;
+    text-align: center;
+}
+
+a{
+    font-family: "DINPro-Light";
+    color:#7c8990;
+    font-size: 300;
+    text-shadow:none;
+    text-align: center;
+    font-size: 3vw;
+    text-decoration: none;
+    margin-bottom: 2%;
+}
+
+.figure-align #logo{
+    display: block;
+    width: 45%;
+    margin: auto;
+    margin-bottom: 15%;
+    margin-top: 5%;
+
+}
+
+.ui-page-theme-a .ui-btn, .ui-page-theme-a .ui-btn:hover{
+    background-color: #4f5477;
+    border-color: #4f5477;
+    border-radius: 2px;
+    color: #fff;
+    line-height: 15px;
+    margin-top: 15%;
+    margin-bottom: 25%;
+    text-shadow:none;
+}   
+
+.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: #7c8990;
+    text-shadow: none;
+    outline: 0;
+    font-family: "DINPro-Light";
+    border-bottom: 1px solid #a0a2ab;
+    border-radius: 4px;   
+}
+
+.form{
+    margin: auto;
+    margin-top: 16%;
+    width: 75%;
+}
+
+.ui-page-theme-a a{
+    color:#ffffff!important;
+    font-weight: 300;
+}
+
+#ajuda, #registre_se{
+    text-align: center;
+}

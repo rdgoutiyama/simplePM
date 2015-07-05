@@ -1,0 +1,127 @@
+ @font-face{
+    font-family: "DINPro-Light";
+    src: url(../fonts/DINPro-Light.otf) format("truetype");
+}
+
+.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit{
+    background: transparent;
+}
+
+.page_title{
+    font-size: 4vw;
+}
+
+.next{
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    float: right;
+    margin-right: 78%;
+    max-height: 30px;
+    max-width: 10px
+}
+
+.back{
+    margin-left: 78%;
+    max-height: 30px;
+    max-width: 10px
+}
+
+.ui-page-theme-a{
+    filter: grayscale(100%);
+    background: url(../images/bg_parte1.png) !important;
+    background-size: cover!important;
+    background-position: center center!important;
+    background-attachment: fixed!important;   
+}
+
+
+
+p{
+    font-family: "DINPro-Light";
+    color:#dadada;
+    font-size: 3.8vw;
+    font-weight: 300;
+    text-align: center;
+    text-shadow:none;
+
+}
+
+.ui-page-theme-a .ui-btn, .ui-page-theme-a .ui-btn:hover{
+    font-family: "DINPro-Light";
+    background-color: #2c6a6e!important;
+    border-color: #2c6a6e!important;
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 3.8vw;
+    line-height: 15px;
+    margin-bottom: 10%;
+    margin-top: 50%;
+    padding: 5%;
+    text-shadow:none;
+
+}
+
+.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: #7c8990;
+    text-shadow: none;
+    outline: 0;
+    font-family: "DINPro-Light"!important;
+    border-bottom: 1px solid #a0a2ab;
+    border-radius: 4px;
+    width: 100%
+}
+
+.ui-input-text input, .ui-input-search input {
+    font-size: 3.8vw;
+}
+
+.ui-header, .ui-footer {
+    border-style: none;
+    border-width: 1px 0;
+    position: relative;
+}
+
+hr{
+    width: 88%;
+    background-color: #fff;
+    border-top: none;
+}
+
+.form{
+    margin: auto;
+    margin-top: 16%;
+    width: 75%;
+}
+
+#container_finalizado{
+    margin-top: 20%;
+    padding: 6%;
+    background-color: rgba(44, 106, 110, .2);
+    width: 100%;
+}
+
+#div_finalizado{
+    border-width: 2px;
+    border-color: #a5a9b0;
+    margin: 2%;
+}
+
+#texto{
+    font-weight: 300;
+    padding: 0 10% 6%;
+    font-size: 4.5vw;
+    z-index: 9999;
+}
+span{
+    color: #dbdbdf;
+    font-size: 5.5vw;
+    font-weight: 900;
+}
+.opacity{
+    background-color: rgba(0, 0, 0, .6);
+    height: 100%;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-min.css">
+        <title>Blank App Designer Packaged Web App Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <link rel="stylesheet" href="css/style_bem_vindo.css">
+
+        <script src="cordova.js" id="xdkJScordova_"></script>
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="jqm/jquery.mobile-min.js" data-ver="0"></script>
+        <script type="application/javascript" src="js/bemvindo.js"></script>
+        
+    </head>
+
+    <body>
+        <div class="upage" id="mainpage" data-role="page">
+            <div class="upage-outer">
+                <div data-role="header" class="container-group inner-element uib_w_1" data-uib="jquery_mobile/header" data-ver="0">
+                    <div class="widget-container wrapping-col single-centered">
+                        <div class="widget uib_w_16 d-margins" data-uib="media/text" data-ver="0">
+
+                            <!-- seta de voltar -->
+                            <a class="setaEsquerda" onclick="javascript:previousPage();" rel="external"><div class="widget-container left-receptacle"><img class="back" src="images/seta.png" ></div></a>
+                            
+                            <!-- seta de avançar -->
+                            <a class="setaDireita" onclick="javascript:nextPage();"  rel="external"><div class="widget-container right-receptacle"><img class="next" src="images/seta.png" ></div></a>
+
+                            <div>
+                                <p class="page_title">Bem Vindo</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="container_bem_vindo">
+                <div id="div_bem_vindo" class="widget uib_w_15 scale-image d-margins" data-uib="media/img" data-ver="0">
+                        <p id="texto">Obrigado por se registrar na Simple PM. Você está  a apenas alguns passos de ter sua casa ao alcance de suas mãos. <br><br>Pressione o botão <br><span>Próximo</span> acima e nos diga um pouco sobre sua casa.</p>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>

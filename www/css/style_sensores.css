@@ -1,0 +1,113 @@
+@font-face{
+                font-family: "DINPro-Light";
+                src: url(../fonts/DINPro-Light.otf) format("truetype");
+            }
+
+            .ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit{
+                background: transparent;
+            }
+
+            .page_title{
+                font-size: 4vw;
+            }
+
+            .power{
+                float: right;
+                margin-right: 55%;
+                max-height: 30px;
+                max-width: 20px
+            }
+
+            .back{
+                margin-left: 78%;
+                max-height: 30px;
+                max-width: 10px
+            }
+            
+            .ui-page-theme-a{
+                background: url(../images/bg_parte1.png)!important;
+                background-size: cover!important;
+                background-position: center center!important;
+                background-attachment: fixed!important;
+            }
+
+            p{
+                font-family: "DINPro-Light";
+                color:#dadada;
+                font-size: 3.8vw;
+                font-weight: 300;
+                text-align: center;
+                text-shadow:none;
+
+            }
+
+            .ui-page-theme-a .ui-btn, .ui-page-theme-a .ui-btn:hover{
+                font-family: "DINPro-Light";
+                background-color: #4F5477;
+                border-color: #4F5477;
+                border-radius: 2px;
+                color: #ffffff;
+                font-size: 3.8vw;
+                line-height: 15px;
+                /*margin-bottom: 6%;*/
+                padding: 5%;
+                text-shadow:none;
+            }
+
+                
+            .ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a {
+                background-color: transparent;
+                border: 1px solid #a0a2ab;
+                border-radius: 4px;
+                box-shadow: none;
+                color: #7c8990;
+                text-shadow: none;
+                font-family: "DINPro-Light"!important;
+                outline: 0;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .ui-input-text input, .ui-input-search input {
+                font-size: 3.8vw;
+            }
+
+            .ui-header, .ui-footer {
+                border-style: none;
+                border-width: 1px 0;
+                position: relative;
+            }
+
+            hr{
+                width: 88%;
+                background-color: #fff;
+                border-top: none;
+            }
+
+            .menu_superior.ui-corner-all {
+                /*margin: 0 0 15px;*/
+                padding: 15px 0;
+            }
+            .menu_superior.ui-corner-all:hover {
+                padding: 15px 0;
+            }
+
+            .form{
+                margin: auto;
+                margin-top: 12%;
+                width: 75%;
+            }
+
+            /*base*/
+
+            
+            .d-margins a{
+                margin-top: 10%;
+
+            }
+            .ui-input-search{
+                width: 80%
+            }
+
+            

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-min.css">
+        <title>Blank App Designer Packaged Web App Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+                @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+                /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <link rel="stylesheet" href="css/style_buscando_sensor.css">
+
+        <script src="cordova.js" id="xdkJScordova_"></script>
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="jqm/jquery.mobile-min.js" data-ver="0"></script>
+    </head>
+
+    <body>
+        <div class="upage" id="mainpage" data-role="page">
+            <div class="upage-outer">
+                <div data-role="header" class="container-group inner-element uib_w_1" data-uib="jquery_mobile/header" data-ver="0">
+                    <div class="widget-container wrapping-col single-centered">
+                        <div class="widget uib_w_16 d-margins" data-uib="media/text" data-ver="0">
+
+                            <!-- seta de voltar -->
+                            <div class="widget-container left-receptacle"></div>
+                            
+                            <!-- seta de avançar -->
+                            <div class="widget-container right-receptacle"></div>
+
+                            <div>
+                                <p class="page_title">Buscando Sensor</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="container_bem_vindo">
+              <h4>Buscando Sensor</h4>
+                <div id="div_bem_vindo" class="widget uib_w_15 scale-image d-margins" data-uib="media/img" data-ver="0">
+                        <p id="texto">Por favor, ative o sensor para que o controlador possa identificá-lo. Após a ativação, este processo pode levar alguns segundos.</p>
+
+                        <div class="loader">Loading...</div>
+                </div>                
+            </div>
+
+            <div class="form">
+                <div class="upage-content content-area vertical-col left" id="page_46_89">
+                    </div>
+
+                    <a id="btn_cancelar" class="widget uib_w_7 d-margins" data-uib="jquery_mobile/button" data-ver="0" data-role="button">Cancelar</a>
+
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                $.ajax({
+                    url: 'http://192.168.1.4/validacao_php/funcaoInserirMensagemServidorControlador.php',
+                    type: 'post',
+                    data: {
+                        msg_id: 0,
+                        msg_serial: getUrlParameter('serialNumber'),
+                        msg_corpo: '-2 3 ',
+                        msg_protocolo: 0
+                    },
+                    success: function(ret){
+                        
+                    },
+                    async: false
+                });
+
+                $('#btn_cancelar').on('click', function(){
+                    $.ajax({
+                        url: 'http://192.168.1.4/validacao_php/funcaoInserirMensagemServidorControlador.php',
+                        type: 'post',
+                        data: {
+                            msg_id: 0,
+                            msg_serial: getUrlParameter('serialNumber'),
+                            msg_corpo: '-2 4 ',
+                            msg_protocolo: 0
+                        },
+                        success: function(ret){
+                            
+                        },
+                        async: false
+                    });
+                });
+
+                window.setInterval(function(){
+                    var msgs;
+                    $.ajax({
+                        url: 'http://192.168.1.4/validacao_php/funcaoListarMensagemControladorServidor.php',
+                        type: 'post',
+                        success: function(ret){
+                            msgs = jQuery.parseJSON(ret);
+                        },
+                        async: false
+                    });
+
+                    var parametros;
+
+                    if(msgs['to'].length > 1){
+                        for(var i=0; i<msgs['to'].length; i++){
+                            if(msgs['to'][i]['serialMensagemControladorServidor'] == parseInt(getUrlParameter('serialNumber'))){
+
+                                var arr = parseArray(msgs['to'][i]['mensagemMensagemControladorServidor']);
+                                if(arr[1] == 11){
+                                    parametros = arr;
+
+                                    var sensores;
+
+                                    $.ajax({
+                                        url: 'http://192.168.1.4/validacao_php/funcaoListarSensor.php',
+                                        type: 'post',
+                                        success: function(ret){
+                                            sensores = jQuery.parseJSON(ret);
+                                        },
+                                        async: false
+                                    });
+
+                                    if(sensores['to'].length > 1){
+                                        for(var j=0; j<sensores['to'].length; j++){
+                                            if(sensores['to'][j]['controlador']['idControlador'] == getUrlParameter('idControlador') && sensores['to'][j]['idNoRedeSensor'] == arr[3]){
+                                                $.ajax({
+                                                    url: 'http://192.168.1.4/validacao_php/funcaoRemoverSensor.php',
+                                                    type: 'post',
+                                                    data: {
+                                                        sen_id: sensores['to'][j]['idSensor']
+                                                    },
+                                                    success: function(ret){
+                                                        $.ajax({
+                                                            url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                                            type: 'post',
+                                                            data: {
+                                                                msg_id: msgs['to'][i]['idMensagemControladorServidor']
+                                                            },
+                                                            success: function(ret){
+                                                                alert('Sensor removido com sucesso.')
+                                                                window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' + getUrlParameter('idControlador');
+                                                            },
+                                                            async: false
+                                                        });
+                                                    },
+                                                    async: false
+                                                });
+                                            }
+                                        }
+                                    }else{
+                                        if(sensores['to']['controlador']['idControlador'] == getUrlParameter('idControlador') && sensores['to']['idNoRedeSensor'] == arr[3]){
+                                            $.ajax({
+                                                url: 'http://192.168.1.4/validacao_php/funcaoRemoverSensor.php',
+                                                type: 'post',
+                                                data: {
+                                                    sen_id: sensores['to']['idSensor']
+                                                },
+                                                success: function(ret){
+                                                    $.ajax({
+                                                        url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                                        type: 'post',
+                                                        data: {
+                                                            msg_id: msgs['to'][i]['idMensagemControladorServidor']
+                                                        },
+                                                        success: function(ret){
+                                                            alert('Sensor removido com sucesso.')
+                                                            window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' + getUrlParameter('idControlador');
+                                                        },
+                                                        async: false
+                                                    });
+                                                },
+                                                async: false
+                                            });
+                                        }
+                                    }
+                                }else if(arr[1] == 0){
+                                    parametros = arr;
+                                    $.ajax({
+                                        url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                        type: 'post',
+                                        data: {
+                                            msg_id: msgs['to'][i]['idMensagemControladorServidor']
+                                        },
+                                        success: function(ret){
+                                            alert('Tempo excedido.');
+                                            window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' +  getUrlParameter('idControlador');
+                                        },
+                                        async: false
+                                    });
+                                }else if(arr[1] == 255){
+                                    parametros = arr;
+                                    $.ajax({
+                                        url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                        type: 'post',
+                                        data: {
+                                            msg_id: msgs['to'][i]['idMensagemControladorServidor']
+                                        },
+                                        success: function(ret){
+                                            alert('Ocorreu um erro. Tente novamente.');
+                                            window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' +  getUrlParameter('idControlador');
+                                        },
+                                        async: false
+                                    });
+                                }else if(arr[1] == 254){
+                                    parametros = arr;
+                                    $.ajax({
+                                        url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                        type: 'post',
+                                        data: {
+                                            msg_id: msgs['to'][i]['idMensagemControladorServidor']
+                                        },
+                                        success: function(ret){
+                                            alert('Operação cancelada.');
+                                            window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' +  getUrlParameter('idControlador');
+                                        },
+                                        async: false
+                                    });
+                                }
+
+                            }
+                        }
+                    }else{
+                        if(msgs['to']['serialMensagemControladorServidor'] == parseInt(getUrlParameter('serialNumber'))){
+
+                            var arr = parseArray(msgs['to']['mensagemMensagemControladorServidor']);
+                            if(arr[1] == 11){
+                                parametros = arr;
+
+                                var sensores;
+
+                                $.ajax({
+                                    url: 'http://192.168.1.4/validacao_php/funcaoListarSensor.php',
+                                    type: 'post',
+                                    success: function(ret){
+                                        sensores = jQuery.parseJSON(ret);
+                                    },
+                                    async: false
+                                });
+
+                                if(sensores['to'].length > 1){
+                                    for(var j=0; j<sensores['to'].length; j++){
+                                        if(sensores['to'][j]['controlador']['idControlador'] == getUrlParameter('idControlador') && sensores['to'][j]['idNoRedeSensor'] == arr[3]){
+                                            $.ajax({
+                                                url: 'http://192.168.1.4/validacao_php/funcaoRemoverSensor.php',
+                                                type: 'post',
+                                                data: {
+                                                    sen_id: sensores['to'][j]['idSensor']
+                                                },
+                                                success: function(ret){
+                                                    $.ajax({
+                                                        url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                                        type: 'post',
+                                                        data: {
+                                                            msg_id: msgs['to']['idMensagemControladorServidor']
+                                                        },
+                                                        success: function(ret){
+                                                            alert('Sensor removido com sucesso.')
+                                                            window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' + getUrlParameter('idControlador');
+                                                        },
+                                                        async: false
+                                                    });
+                                                },
+                                                async: false
+                                            });
+                                        }
+                                    }
+                                }else{
+                                    if(sensores['to']['controlador']['idControlador'] == getUrlParameter('idControlador') && sensores['to']['idNoRedeSensor'] == arr[3]){
+                                        $.ajax({
+                                            url: 'http://192.168.1.4/validacao_php/funcaoRemoverSensor.php',
+                                            type: 'post',
+                                            data: {
+                                                sen_id: sensores['to']['idSensor']
+                                            },
+                                            success: function(ret){
+                                                $.ajax({
+                                                    url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                                    type: 'post',
+                                                    data: {
+                                                        msg_id: msgs['to']['idMensagemControladorServidor']
+                                                    },
+                                                    success: function(ret){
+                                                        alert('Sensor removido com sucesso.')
+                                                        window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' + getUrlParameter('idControlador');
+                                                    },
+                                                    async: false
+                                                });
+                                            },
+                                            async: false
+                                        });
+                                    }
+                                }
+                            }else if(arr[1] == 0){
+                                parametros = arr;
+                                $.ajax({
+                                    url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                    type: 'post',
+                                    data: {
+                                        msg_id: msgs['to']['idMensagemControladorServidor']
+                                    },
+                                    success: function(ret){
+                                        alert('Tempo excedido.');
+                                        window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' +  getUrlParameter('idControlador');
+                                    },
+                                    async: false
+                                });
+                            }else if(arr[1] == 255){
+                                parametros = arr;
+                                $.ajax({
+                                    url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                    type: 'post',
+                                    data: {
+                                        msg_id: msgs['to']['idMensagemControladorServidor']
+                                    },
+                                    success: function(ret){
+                                        alert('Ocorreu um erro. Tente novamente.');
+                                        window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' +  getUrlParameter('idControlador');
+                                    },
+                                    async: false
+                                });
+                            }else if(arr[1] == 254){
+                                parametros = arr;
+                                $.ajax({
+                                    url: 'http://192.168.1.4/validacao_php/funcaoRemoverMensagemControladorServidor.php',
+                                    type: 'post',
+                                    data: {
+                                        msg_id: msgs['to']['idMensagemControladorServidor']
+                                    },
+                                    success: function(ret){
+                                        alert('Operação cancelada.');
+                                        window.location.href = 'sensores.html?serialNumber=' + getUrlParameter('serialNumber') + '&idControlador=' +  getUrlParameter('idControlador');
+                                    },
+                                    async: false
+                                });
+                            }
+
+                        }
+                    }
+
+                }, 10000);
+
+            });
+
+            function parseArray(str){
+                var arr = new Array();
+                var elements = str.split(" ");
+                for(var i=0; i<elements.length-1; i++){
+                    arr[i] = elements[i];
+                }
+                return arr;
+            }
+
+            function getUrlParameter(sParam){
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i=0;i<vars.length;i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == sParam) {
+                        return pair[1];
+                    }
+                }
+                return "";
+            } 
+
+        </script>
+
+    </body>
+
+</html>
