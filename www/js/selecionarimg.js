@@ -75,6 +75,7 @@ document.addEventListener("intel.xdk.camera.picture.add",function(event){
     $("#img_camera").css('height', alturaTemporariaDivCropImagem);
     document.getElementById("img_camera").setAttribute("src", url); 
     isSelectedPhoto = true;
+    intel.xdk.device.setRotateOrientation("portrait");
 });
 
 $("#abrir_galeria").on('click',function(){
